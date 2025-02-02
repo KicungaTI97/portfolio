@@ -1,18 +1,20 @@
 import React, { useContext, useState } from 'react';
 import {
-  Briefcase, Search, Star,
-  ExternalLink, Github, LayoutGrid, LayoutList
+  Briefcase, Search, Star, LayoutGrid, LayoutList,
+  ExternalLinkIcon,
+  GithubIcon
 } from 'lucide-react';
 
 import { ProjectButton } from '../../components/projects/projectButton';
 import { DataContext } from '../../context/dataContext';
-import { useScroll, useSpring, motion} from 'framer-motion';
+import { useScroll, useSpring, motion } from 'framer-motion';
 
+type ViewMode = 'grid' | 'list'
 // Main Component
 export const ProjectsSection: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
-  const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
+  const [viewMode, setViewMode] = useState<ViewMode>('grid');
   const [expandedProjects, setExpandedProjects] = useState<number[]>([]);
   const [bookmarkedProjects, setBookmarkedProjects] = useState<number[]>([]);
 
@@ -94,6 +96,7 @@ export const ProjectsSection: React.FC = () => {
             <div className="flex rounded-full bg-white/10 p-1">
               <button
                 onClick={() => setViewMode('grid')}
+                title='button View Mode Grid'
                 className={`p-2 rounded-full transition ${
                   viewMode === 'grid' ? 'bg-pink-500 text-white' : 'text-white/60'
                 }`}
@@ -102,6 +105,7 @@ export const ProjectsSection: React.FC = () => {
               </button>
               <button
                 onClick={() => setViewMode('list')}
+                title='button View Mode Grid'
                 className={`p-2 rounded-full transition ${
                   viewMode === 'list' ? 'bg-pink-500 text-white' : 'text-white/60'
                 }`}
@@ -155,6 +159,7 @@ export const ProjectsSection: React.FC = () => {
                 <div className="absolute top-4 right-4 space-x-2 ">
                   <button
                     onClick={() => toggleProjectBookmark(project.id)}
+                    title='button Bookmark'
                     className="p-2 bg-black/50 rounded-full hover:bg-black/70 transition "
                   >
                     <Star
@@ -173,7 +178,7 @@ export const ProjectsSection: React.FC = () => {
                       size="small"
                       href={project.link}
                       target="_blank"
-                      icon={ExternalLink}
+                      icon={ExternalLinkIcon}
                     >
                       Demo
                     </ProjectButton>
@@ -182,7 +187,7 @@ export const ProjectsSection: React.FC = () => {
                       size="small"
                       href={project.github}
                       target="_blank"
-                      icon={Github}
+                      icon={GithubIcon}
                     >
                       Código
                     </ProjectButton>

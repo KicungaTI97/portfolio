@@ -1,16 +1,18 @@
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
+import { DefaultValues, useForm, UseFormReturn } from "react-hook-form";
 import { contactSchema } from "../schemas/formSchema";
+import { z } from "zod";
 
-export function useContactForm(){
-    return(
-    useForm({
-        resolver: zodResolver(contactSchema),
-        defaultValues: {
-            name: '',
-            email: '',
-            message: ''
-        }
-    })  
-    )
-}
+
+type ContactFormData = z.infer<typeof contactSchema>
+export function useContactForm<T extends ContactFormData>(): UseFormReturn<T> {
+    return useForm<T>({
+      resolver: zodResolver(contactSchema),
+      defaultValues: {
+        name: '',
+        email: '',
+        subject: '',
+        message: '',
+      } as DefaultValues<T>,
+    });
+  }

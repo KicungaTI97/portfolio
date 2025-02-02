@@ -1,10 +1,10 @@
-import { ExternalLink } from "lucide-react";
+import { ExternalLink, LucideIcon } from "lucide-react";
 
 interface ProjectButtonProps {
   variant?: 'primary' | 'secondary' | 'outline' | 'ghost';
   size?: 'small' | 'medium' | 'large';
   children: React.ReactNode;
-  icon?: React.ComponentType<any>;
+  icon?: LucideIcon; // Tipagem corrigida para aceitar ícones do Lucide
   href?: string;
   onClick?: () => void;
   className?: string;
@@ -15,7 +15,7 @@ export const ProjectButton: React.FC<ProjectButtonProps> = ({
   variant = 'primary',
   size = 'medium',
   children,
-  icon: Icon,
+  icon: Icon, // Agora, Icon é tipado como LucideIcon
   href,
   onClick,
   className = '',
@@ -55,7 +55,7 @@ export const ProjectButton: React.FC<ProjectButtonProps> = ({
         ${className}
       `}
     >
-      {Icon && <Icon className="w-5 h-5 mr-2" />}
+      {Icon && <Icon className="w-5 h-5 mr-2" />} {/* Agora Icon pode ser usado como componente */}
       <span>{children}</span>
       {href && <ExternalLink className="w-4 h-4 ml-2" />}
     </ButtonComponent>

@@ -8,9 +8,9 @@ export function Navbar() {
   const navigate = useNavigate();
 
   const { personalInfo } = useContext(DataContext);
-  const menuRef = useRef(null);
+  const menuRef = useRef<HTMLElement>(null);
 
-  const isActiveLink = (path) =>{
+  const isActiveLink = (path: string): string =>{
     return location.pathname === path ? 'border-b-2 border-pink-500' : 'hover:text-pink-300';
   };
 
@@ -36,8 +36,8 @@ export function Navbar() {
 
   // Fechar menu quando clicar fora
   useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (menuRef.current && !menuRef.current.contains(event.target)) {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
         setIsMenuOpen(false);
       }
     };

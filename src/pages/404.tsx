@@ -1,9 +1,8 @@
 import { Home, ArrowLeft, RefreshCw } from 'lucide-react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 export const NotFount = () => {
 const navigate = useNavigate()
-const location = useLocation()
 
   return (
     <div className="min-h-screen flex items-center justify-center p-4 bg-gradient-to-br from-gray-900 to-black">

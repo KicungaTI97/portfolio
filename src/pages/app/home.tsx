@@ -153,6 +153,16 @@ export function Home() {
                 Ver Projetos
               </motion.button>
             </NavLink>
+            <motion.button
+             className="bg-white/10 text-white px-8 py-3 rounded-full hover:bg-white/20 transition"
+             whileHover={{ 
+              scale: 1.05,
+              boxShadow: "0 10px 20px rgba(0,0,0,0.2)"
+            }}
+            whileTap={{ scale: 0.95 }}
+             >
+              Download CV
+            </motion.button>
           </motion.div>
         </motion.div>
       </div>

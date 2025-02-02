@@ -1,5 +1,5 @@
-import { Code, Coffee, Download, Github, Instagram, Linkedin } from "lucide-react";
-import { createContext } from "react";
+import { Code, Coffee, Download, Github, Linkedin, Mail, Twitter } from "lucide-react";
+import { createContext, ReactNode } from "react";
 
 // Interface para itens genéricos
 interface Item {
@@ -98,14 +98,14 @@ interface PersonalInfoType {
 }
 interface SocialLinkProps {
   name: string,
-  icon:React.RefAttributes<SVGSVGElement>;
+  icon:ReactNode;
   url: string,
   username: string,
 }
 interface LinksType{
   name: string,
   url: string
-  icon?: React.RefAttributes<SVGSVGElement>;
+  icon?: ReactNode;
 }
 
 interface FooterLinkType{
@@ -442,8 +442,14 @@ export function DataProvider({ children }: DataProviderProps) {
       username: '@yourusername'
     },
     {
-      name: 'Instagram',
-      icon: <Instagram className="w-5 h-5" />,
+      name: 'Twitter',
+      icon: <Twitter className="w-5 h-5" />,
+      url: 'https://instagram.com/your-handle',
+      username: '@yourhandle'
+    },
+    {
+      name: 'Email',
+      icon: <Mail className="w-5 h-5" />,
       url: 'https://instagram.com/your-handle',
       username: '@yourhandle'
     }

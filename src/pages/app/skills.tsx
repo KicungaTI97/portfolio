@@ -95,7 +95,7 @@ export const Skills = () => {
 
   const progressVariants = {
     hidden: { width: 0 },
-    visible: (level) => ({
+    visible: (level:number) => ({
       width: `${level}%`,
       transition: {
         duration: 0.8,
