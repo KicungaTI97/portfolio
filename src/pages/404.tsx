@@ -1,7 +1,7 @@
 import { Home, ArrowLeft, RefreshCw } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
-export const NotFount = () => {
+export const NotFound = () => {
 const navigate = useNavigate()
 
   return (

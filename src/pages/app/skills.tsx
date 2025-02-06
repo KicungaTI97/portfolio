@@ -1,7 +1,7 @@
 import { Code, Database, Palette, Terminal, Layout, Star } from 'lucide-react';
 import { motion, useScroll, useSpring } from 'framer-motion';
 
-export const Skills = () => {
+export default function Skills(){
   const {scrollYProgress} = useScroll()
 
   const scaleX = useSpring(scrollYProgress, {

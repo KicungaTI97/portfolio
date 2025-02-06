@@ -59,7 +59,12 @@ interface Experience {
   achievements: string[];
 }
 
-
+interface Hobby{
+  name: string;
+  description: string;
+  category: 'Criativo' | 'Esporte' |'Tecnologia'| 'Cultura' |'Outdoor' | 'Ciência';
+  frequency: string
+}
 interface PersonalInfoType {
   name: string;
   title: string;
@@ -67,6 +72,7 @@ interface PersonalInfoType {
     profile1: string,
     profile3: string,
   };
+  hobbies: Hobby[],
   yearsOfExperience: number;
   location: string;
   availability: "Disponível" | "Indisponível" | "Freelance";
@@ -119,6 +125,7 @@ interface DataContextType {
     softSkills: Skill[];
     tools: Skill[];
   };
+
   projects: Project[];
   certificates: Certificate[];
   socialLinks:SocialLinkProps[];
@@ -240,8 +247,35 @@ export function DataProvider({ children }: DataProviderProps) {
         technologies: ["React", "JavaScript", "CSS", "Git"],
         companyLogo: "/api/placeholder/64/64"
       }
+    ],
+    hobbies: [
+      {
+        name: "Fotografia Urbana",
+        description: "Explorando a arte de capturar a essência da cidade através de composições únicas, documentando a vida urbana e sua arquitetura em constante mudança.",
+        category: "Criativo",
+        frequency: "Semanal"
+      },
+      {
+        name: "Culinária Experimental",
+        description: "Explorando fusões gastronômicas e técnicas modernas de cozinha, criando pratos únicos que combinam diferentes culturas culinárias.",
+        category: "Cultura",
+        frequency: "Quinzenal"
+      },
+      {
+        name: "Jardinagem Urbana",
+        description: "Mantendo um jardim vertical e horta hidropônica em casa, experimentando com cultivo sustentável e automação de irrigação.",
+        category: "Outdoor",
+        frequency: "Diário"
+      },
+      {
+        name: "Criação de Conteúdo Tech",
+        description: "Produzindo vídeos e artigos sobre tecnologia e desenvolvimento, compartilhando conhecimento e experiências com a comunidade.",
+        category: "Tecnologia",
+        frequency: "Semanal"
+      }
     ]
   };
+
 
   const projects: Project[] = [
     {
@@ -318,7 +352,7 @@ export function DataProvider({ children }: DataProviderProps) {
       }
     },
     {
-      id: 3,
+      id: 4,
       title: "Dashboard Pizzaria",
       description: "🍕📊 – Um dashboard inteligente para pizzarias, projetado para otimizar a gestão de pedidos, controle de receitas, estoque e relatórios financeiros. Acompanhe tudo em tempo real, agilize processos e melhore a eficiência do seu negócio, garantindo uma experiência incrível para seus clientes!",
       image: "image/dashboard_pizzaria.jpeg",
@@ -342,7 +376,7 @@ export function DataProvider({ children }: DataProviderProps) {
       }
     },
     {
-      id: 3,
+      id: 5,
       title: "CrecheKids",
       description: "🏫👶 – Uma plataforma completa para a gestão de centros infantis (creches). Permite o acompanhamento do desenvolvimento das crianças, registro de presença, comunicação com os pais e administração de atividades diárias. Tudo em um só lugar, trazendo mais organização e tranquilidade para gestores, educadores e famílias!",
       image: "image/creche.jpeg",
@@ -459,7 +493,15 @@ export function DataProvider({ children }: DataProviderProps) {
 
 
   return (
-    <DataContext.Provider value={{ personalInfo, certificates, projects, skills, socialLinks, footerLinks}}>
+    <DataContext.Provider value={
+      { 
+        personalInfo,
+        certificates,
+        projects,
+        skills,
+        socialLinks, 
+        footerLinks,
+      }}>
       {children}
     </DataContext.Provider>
   );

@@ -1,26 +1,37 @@
+import {lazy, Suspense} from 'react'
 import { createBrowserRouter } from "react-router-dom";
 import { Layout } from "./pages/_Layout/app";
-import { Home } from "./pages/app/home";
-import { ProjectsSection } from "./pages/app/projects";
-import { Experience } from "./pages/app/experience";
-//import { NotFount } from "./pages/404";
-import { About } from "./pages/app/about";
-import { Skills } from "./pages/app/skills";
-import { Contact } from "./pages/app/contact";
-import { NotFount } from "./pages/404";
+import { NotFound } from './pages/404';
+import { LoadingScreen } from './components/loading/loadingScreen';
+
+
+//importar componentes usando lazy
+const Home = lazy(() => import('./pages/app/home'));
+const About = lazy(() => import('./pages/app/about'));
+const ProjectsSection = lazy(() => import('./pages/app/projects'));
+const Contact = lazy(() => import('./pages/app/contact'));
+const Experience = lazy(() => import('./pages/app/experience'));
+const Skills = lazy(() => import('./pages/app/skills'));
+
+
 
 export const router = createBrowserRouter([
+    
     {
         path: '/', 
-        element:<Layout/>, 
+        element:(
+            <Suspense fallback={<LoadingScreen />}>
+                <Layout />
+            </Suspense>
+        ),
             children: [
-                { path: 'home', element: <Home /> },
+                { index:true, path: 'home', element: <Home /> },
                 { path: 'about', element: <About /> },
                 { path: 'projects', element: <ProjectsSection /> },
                 { path: 'contact', element: <Contact /> },
                 { path: 'experience', element: <Experience /> },
                 { path: 'skills', element: <Skills /> },
-                { path: '*', element: <NotFount /> }, // Default route 404
+                { path: '*', element: <NotFound /> }, // Default route 404
                 ]
     },
 ])

@@ -4,7 +4,7 @@ import { useContext } from 'react';
 import { DataContext } from '../../context/dataContext';
 import { SocialIcon } from '../../components/projects/socialIcons';
 
-export function Home() {
+export default function Home() {
   const { scrollYProgress } = useScroll();
   const { personalInfo } = useContext(DataContext);
   const { profile1 } = personalInfo.profiles;

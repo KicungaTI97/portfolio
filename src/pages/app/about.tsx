@@ -5,14 +5,13 @@ import {
 import { DataContext } from '../../context/dataContext';
 import { useScroll, useSpring, motion } from 'framer-motion';
 
-export const About: React.FC = () => {
-  const [activeTab, setActiveTab] = useState<'profile' | 'education' | 'skills'>('profile');
+export default function About(){
+  const [activeTab, setActiveTab] = useState<'profile' | 'education' | 'hobbies'>('profile');
   const {personalInfo} = useContext(DataContext)
   
   const { scrollYProgress } = useScroll();
   const {profile3} = personalInfo.profiles
   const {
-    skills,
     bio,
     availability,
     education,
@@ -22,6 +21,7 @@ export const About: React.FC = () => {
     location,
     socialLinks,
     yearsOfExperience,
+    hobbies
   } = personalInfo
 
   const scaleX = useSpring(scrollYProgress, {
@@ -123,7 +123,7 @@ export const About: React.FC = () => {
         {/* Navigation Tabs */}
         <motion.div className="flex justify-center mb-12" variants={itemVariants}>
           <div className="flex space-x-2 bg-white/10 rounded-full p-1">
-            {(['profile', 'education', 'skills'] as const).map((tab) => (
+            {(['profile', 'education', 'hobbies'] as const).map((tab) => (
               <motion.button
                 key={tab}
                 onClick={() => setActiveTab(tab)}
@@ -249,30 +249,55 @@ export const About: React.FC = () => {
                 </div>
               </div>
             )}
-
-            {activeTab === 'skills' && (
-              <>
-                {skills.map((skillCategory, index) => (
-                  <div key={index}
-                   className="bg-white/10 backdrop-blur-lg rounded-lg p-6">
-                    <h3 className="text-xl font-bold text-white mb-6">{skillCategory.category}</h3>
-                    <div className="flex flex-wrap gap-3">
-                      {skillCategory.items.map((skill, skillIndex) => (
-                        <motion.span
-                          key={skillIndex}
-                          className="bg-gradient-to-r from-pink-500 to-purple-500 text-white px-4 py-2 rounded-full text-sm cursor-pointer"
-                          whileHover={{ scale: 1.05, y: -5 }}
-                          whileTap={{ scale: 0.95 }}
-                          transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                        >
-                          {skill}
-                        </motion.span>
-                      ))}
-                    </div>
-                  </div>
-                ))}
-              </>
-            )}
+            {/*hobbies */}
+          {activeTab === 'hobbies' && (
+            <motion.div
+              key="hobbies"
+              variants={tabContentVariants}
+              initial="hidden"
+              animate="visible"
+              exit="exit"
+              className="space-y-8"
+            >
+              <motion.div
+                className="bg-white/10 backdrop-blur-lg rounded-lg p-6"
+                whileHover={{ scale: 1.02 }}
+                transition={{ type: "spring", stiffness: 300 }}
+              >
+                <h3 className="text-xl font-bold text-white mb-6">Meus Hobbies</h3>
+                <div className="grid grid-cols-1 gap-4">
+                  {hobbies.map((hobby, index) => (
+                    <motion.div
+                      key={index}
+                      variants={itemVariants}
+                      className="bg-white/5 p-6 rounded-lg hover:bg-white/10 transition-all duration-300"
+                      whileHover={{ 
+                        scale: 1.02,
+                        backgroundColor: 'rgba(255,255,255,0.1)'
+                      }}
+                    >
+                      <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                        <div>
+                          <h4 className="text-lg font-semibold text-white mb-2 flex items-center gap-2">
+                            {hobby.name}
+                            <span className="text-xs px-3 py-1 rounded-full bg-pink-500/20 text-pink-300">
+                              {hobby.category}
+                            </span>
+                          </h4>
+                          <p className="text-white/70">{hobby.description}</p>
+                        </div>
+                        <div className="shrink-0">
+                          <span className="text-sm px-4 py-2 rounded-full bg-purple-500/20 text-purple-300">
+                            {hobby.frequency}
+                          </span>
+                        </div>
+                      </div>
+                    </motion.div>
+                  ))}
+                </div>
+              </motion.div>
+            </motion.div>
+          )}
           </div>
 
           {/* Right Column */}

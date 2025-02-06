@@ -9,7 +9,7 @@ import { DataContext } from '../../context/dataContext';
 import { useScroll, useSpring, motion } from 'framer-motion';
 import { ContactForm } from '../../components/projects/contactForm';
 
-export const Contact = () => {
+export default function Contact(){
 
   const { scrollYProgress } = useScroll();
   const { socialLinks } = useContext(DataContext);

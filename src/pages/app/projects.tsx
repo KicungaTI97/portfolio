@@ -11,7 +11,7 @@ import { useScroll, useSpring, motion } from 'framer-motion';
 
 type ViewMode = 'grid' | 'list'
 // Main Component
-export const ProjectsSection: React.FC = () => {
+export default function ProjectsSection() {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
   const [viewMode, setViewMode] = useState<ViewMode>('grid');

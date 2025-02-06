@@ -4,7 +4,7 @@ import { useContext } from 'react';
 import { DataContext } from '../../context/dataContext';
 import { useScroll, motion, useSpring } from 'framer-motion';
 
-export const Experience = () => {
+export default function Experience(){
 const {scrollYProgress} = useScroll()
 
 const scaleX = useSpring(scrollYProgress, {
