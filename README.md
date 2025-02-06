@@ -32,7 +32,7 @@ export default tseslint.config({
 ```js
 // eslint.config.js
 import react from 'eslint-plugin-react'
-Mzemzaa176997**//97%@
+
 export default tseslint.config({
   // Set the react version
   settings: { react: { version: '18.3' } },
