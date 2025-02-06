@@ -151,7 +151,7 @@ export function DataProvider({ children }: DataProviderProps) {
       profile3: "src/assets/profile3.jpg",
     },
     location: "Lobito, Angola",
-    yearsOfExperience: 5,
+    yearsOfExperience: 2,
     availability: "Disponível",
     cv:"../doc/cv-Dev.pdf",
     bio: `Desenvolvedor apaixonado por criar experiências web excepcionais, 
