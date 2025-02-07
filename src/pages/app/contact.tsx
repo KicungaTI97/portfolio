@@ -80,19 +80,22 @@ export default function Contact(){
               <div className="mt-8 pt-8 border-t border-white/10">
                 <h4 className="text-white font-semibold mb-4">Me encontre nas redes</h4>
                 <div className="flex space-x-4">
-                  {socialLinks.map((social, index) => (
+                  {socialLinks.map((social, index) => {
+                    const Icon = social.icon
+                   return(
                     <a
-                      key={index}
-                      href={social.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="bg-white/10 p-3 rounded-lg hover:bg-white/20 transition-all duration-300 group"
-                    >
-                      <div className="text-white group-hover:text-pink-500 transition-colors">
-                        {social.icon}
-                      </div>
-                    </a>
-                  ))}
+                    key={index}
+                    href={social.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-white/10 p-3 rounded-lg hover:bg-white/20 transition-all duration-300 group"
+                  >
+                    <div className="text-white group-hover:text-pink-500 transition-colors">
+                      <Icon />
+                    </div>
+                  </a>
+                   )
+                })}
                 </div>
               </div>
             </div>

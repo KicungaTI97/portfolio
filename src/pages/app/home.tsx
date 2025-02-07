@@ -43,37 +43,7 @@ export default function Home() {
       />
 
       <div className="min-h-screen bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-900 flex items-center justify-center relative overflow-hidden">
-        {/* Animated background elements */}
-        <div className="absolute inset-0">
-          <motion.div
-            className="absolute h-64 w-64 rounded-full bg-purple-600/20 blur-3xl"
-            animate={{
-              x: [0, 100, 0],
-              y: [0, -50, 0],
-              scale: [1, 1.2, 1],
-            }}
-            transition={{
-              duration: 15,
-              repeat: Infinity,
-              ease: "easeInOut"
-            }}
-            style={{ top: '20%', left: '20%' }}
-          />
-          <motion.div
-            className="absolute h-64 w-64 rounded-full bg-pink-600/20 blur-3xl"
-            animate={{
-              x: [0, -100, 0],
-              y: [0, 50, 0],
-              scale: [1.2, 1, 1.2],
-            }}
-            transition={{
-              duration: 20,
-              repeat: Infinity,
-              ease: "easeInOut"
-            }}
-            style={{ top: '60%', right: '20%' }}
-          />
-        </div>
+
 
         <motion.div 
           className="max-w-4xl mx-4 text-center z-10"
@@ -154,7 +124,7 @@ export default function Home() {
               </motion.button>
             </NavLink>
             <motion.button
-             className="bg-white/10 text-white px-8 py-3 rounded-full hover:bg-white/20 transition"
+             className="bg-white/10 text-white px-8 py-4 rounded-full hover:bg-white/20 transition shadow-lg font-semibold"
              whileHover={{ 
               scale: 1.05,
               boxShadow: "0 10px 20px rgba(0,0,0,0.2)"

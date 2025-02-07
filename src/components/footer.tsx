@@ -11,7 +11,6 @@ export const Footer = () => {
   
   const { personalInfo, socialLinks } = useContext(DataContext)
   const { name, location } = personalInfo;
-
   //validação do email
   const isValidEmails = (email: string) => {
     return /\S+@\S+\.\S+/.test(email)
@@ -76,18 +75,21 @@ export const Footer = () => {
             Desenvolvedor Frontend apaixonado por criar experiências digitais excepcionais e interfaces intuitivas.
             </p>
             <div className="flex items-center justify-center md:justify-start space-x-4">
-              {socialLinks.map((social, index) => (
-                <a
-                  key={index}
-                  href={social.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-white/70 hover:text-pink-400 transform hover:-translate-y-1 transition-all duration-300"
-                  aria-label={social.name}
-                >
-                  {social.icon}
-                </a>
-              ))}
+              {socialLinks.map((social, index) => {
+                const Icon = social.icon
+            return(
+              <a
+              key={index}
+              href={social.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-white/70 hover:text-pink-400 transform hover:-translate-y-1 transition-all duration-300"
+              aria-label={social.name}
+            >
+              <Icon />
+            </a>
+            )
+            })}
             </div>
           </div>
 
