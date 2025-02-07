@@ -4,10 +4,12 @@ import { useContext } from 'react';
 import { DataContext } from '../../context/dataContext';
 import { SocialIcon } from '../../components/projects/socialIcons';
 
+import profile from '../../assets/profile.png'
+
 export default function Home() {
   const { scrollYProgress } = useScroll();
   const { personalInfo } = useContext(DataContext);
-  const { profile1 } = personalInfo.profiles;
+
 
   const scaleX = useSpring(scrollYProgress, {
     stiffness: 100,
@@ -70,7 +72,7 @@ export default function Home() {
                }}
                />
             <img
-              src={profile1}
+              src={profile}
               alt="Profile"
               className="relative w-full h-full rounded-full object-cover border-4 border-white shadow-lg"
             />

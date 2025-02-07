@@ -4,13 +4,13 @@ import {
 } from 'lucide-react';
 import { DataContext } from '../../context/dataContext';
 import { useScroll, useSpring, motion } from 'framer-motion';
+import profile from '../../assets/profile3.jpg'
 
 export default function About(){
   const [activeTab, setActiveTab] = useState<'profile' | 'education' | 'hobbies'>('profile');
   const {personalInfo} = useContext(DataContext)
   
   const { scrollYProgress } = useScroll();
-  const {profile3} = personalInfo.profiles
   const {
     bio,
     availability,
@@ -307,7 +307,7 @@ export default function About(){
             <div className="relative">
               <div className="aspect-square rounded-lg overflow-hidden">
               <motion.img
-                    src={profile3}
+                    src={profile}
                     alt="Profile"
                     className="w-full h-full object-cover opacity-80"
                     initial={{ scale: 1.2 }}
